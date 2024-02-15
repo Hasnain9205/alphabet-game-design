@@ -9,6 +9,9 @@
 function handleKbdPrss(event){
 const playerPressed=event.key;
 
+if(playerPressed === 'Escape'){
+    gameOver();
+}
 
 const currentAlphabet = document.getElementById('crunt-alphabet');
 const currentAlphabetText = currentAlphabet.innerText;
@@ -16,6 +19,7 @@ const currentText = currentAlphabetText.toLocaleLowerCase();
 
 if(playerPressed === currentText){
     removeBackgoundColorById(currentText);
+
     
     // const currentScoreElement=document.getElementById('current-score');
     // const currentScore = currentScoreElement.innerText;
@@ -57,7 +61,7 @@ function play(){
     hideElementById('final-score');
     updateScoreElentById('current-life',5);
     updateScoreElentById('current-score',0);
-    removeBackgoundColorById('currentText')
+
     continueGame()
 }
 
@@ -67,6 +71,9 @@ function gameOver(){
 
     const lastScore = getTextValueById('current-score');
     updateScoreElentById('last-score',lastScore);
+
+    const currentElement = getElementTextById('crunt-alphabet');
+    removeBackgoundColorById(currentElement);
     
 
 }
