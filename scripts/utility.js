@@ -32,6 +32,20 @@ function removeBackgoundColorById(elementId){
     element.classList.remove('bg-[#FFA500]')
 }
 
+function getTextValueById(elementId){
+    const currentScoreElement = document.getElementById(elementId);
+    const currentScore = currentScoreElement.innerText;
+    const newScore = parseInt(currentScore);
+
+    return newScore;
+}
+
+function updateScoreElentById(elementId,value){
+    const newScore = document.getElementById(elementId);
+    newScore.innerText = value;
+
+}
+
 function continueGame(){
     const alphabet = getRendomAlphabet();
     

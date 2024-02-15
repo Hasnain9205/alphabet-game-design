@@ -16,18 +16,57 @@ const currentText = currentAlphabetText.toLocaleLowerCase();
 
 if(playerPressed === currentText){
     removeBackgoundColorById(currentText);
+    
+    // const currentScoreElement=document.getElementById('current-score');
+    // const currentScore = currentScoreElement.innerText;
+    // const score = parseInt(currentScore);
+    // const newScore = score + 1;
+    // currentScoreElement.innerText = newScore;
+
+    const newScore = getTextValueById('current-score');
+    const updateScore = newScore + 1;
+    updateScoreElentById('current-score',updateScore);
+
+
     continueGame();
 }
 else{
-    console.log('you lost a life')
-}
+    // const currentLifeElement = document.getElementById('current-life');
+    // const currentLife = currentLifeElement.innerText;
+    // const newLife = parseInt(currentLife);
+    // const life = newLife - 1;
+    // currentLifeElement.innerText = life;
 
+    const newLife = getTextValueById('current-life');
+    const updateLife = newLife - 1;
+    updateScoreElentById('current-life',updateLife);
+
+    if(updateLife === 0){
+        gameOver();
+    }
+
+    
+}
 }
 
 document.addEventListener('keyup',handleKbdPrss);
 
 function play(){
-    hideElementById('hidden');
-    showElementById('hidden2');
+    hideElementById('play');
+    showElementById('ground');
+    hideElementById('final-score');
+    updateScoreElentById('current-life',5);
+    updateScoreElentById('current-score',0);
+    removeBackgoundColorById('currentText')
     continueGame()
+}
+
+function gameOver(){
+    hideElementById('ground');
+    showElementById('final-score');
+
+    const lastScore = getTextValueById('current-score');
+    updateScoreElentById('last-score',lastScore);
+    
+
 }
